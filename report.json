@@ -5,22 +5,47 @@
       "expected": "Perfect code",
       "syntax_valid": true,
       "has_placeholder": false,
-      "pass": true,
-      "issues": []
+      "has_docstring": false,
+      "naming_issues": [
+        "Poor variable name: 'a'",
+        "Poor variable name: 'b'"
+      ],
+      "score": 50,
+      "pass": false,
+      "issues": [
+        "Missing function docstring",
+        "Poor variable name: 'a'",
+        "Poor variable name: 'b'"
+      ]
     },
     {
       "id": 2,
       "expected": "Perfect recursive code",
       "syntax_valid": true,
       "has_placeholder": false,
-      "pass": true,
-      "issues": []
+      "has_docstring": false,
+      "naming_issues": [
+        "Poor variable name: 'n'",
+        "Poor variable name: 'n'",
+        "Poor variable name: 'n'"
+      ],
+      "score": 35,
+      "pass": false,
+      "issues": [
+        "Missing function docstring",
+        "Poor variable name: 'n'",
+        "Poor variable name: 'n'",
+        "Poor variable name: 'n'"
+      ]
     },
     {
       "id": 3,
       "expected": "Syntax error - missing colon",
       "syntax_valid": false,
       "has_placeholder": false,
+      "has_docstring": false,
+      "naming_issues": [],
+      "score": 0,
       "pass": false,
       "issues": [
         "Syntax Error: expected ':' (<unknown>, line 3)"
@@ -31,16 +56,21 @@
       "expected": "Contains placeholder comments",
       "syntax_valid": true,
       "has_placeholder": true,
+      "has_docstring": false,
+      "naming_issues": [],
+      "score": 40,
       "pass": false,
       "issues": [
         "Contains weak placeholder comments",
-        "Code is syntactically correct but contains placeholders"
+        "Missing function docstring"
       ]
     }
   ],
   "summary": {
     "total": 4,
-    "passed": 2,
-    "failed": 2
+    "passed": 0,
+    "failed": 4,
+    "average_score": 31.25,
+    "timestamp": "2026-06-24T09:13:27.983574"
   }
 }
