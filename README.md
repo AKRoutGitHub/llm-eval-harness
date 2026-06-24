@@ -2,6 +2,9 @@
 
 An AI-powered evaluation framework for grading Large Language Model code outputs.
 
+## Project Context & Origin
+> This evaluation harness was originally developed and iterated in a localized, private workspace to test model behavior benchmarks. It has been refactored, decoupled, and published here as a public portfolio piece to demonstrate programmatic dataset validation pipelines and strict QA edge-case screening.
+
 ## Features
 
 - Syntax validation using Python's `ast` module
