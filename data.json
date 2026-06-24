@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "code": "def add(a, b):\n    return a + b\n\nprint(add(5, 3))",
+    "expected": "Perfect code"
+  },
+  {
+    "id": 2,
+    "code": "def factorial(n):\n    if n == 0:\n        return 1\n    return n * factorial(n-1)\n\nprint(factorial(5))",
+    "expected": "Perfect recursive code"
+  },
+  {
+    "id": 3,
+    "code": "def calculate_sum(numbers):\n    total = 0\n    for num in numbers\n        total += num\n    return total",
+    "expected": "Syntax error - missing colon"
+  },
+  {
+    "id": 4,
+    "code": "def process_data(data):\n    # To be implemented\n    result = None\n    # TODO: complete this function\n    return result",
+    "expected": "Contains placeholder comments"
+  }
+]
