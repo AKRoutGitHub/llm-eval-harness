@@ -1,0 +1,46 @@
+{
+  "evaluations": [
+    {
+      "id": 1,
+      "expected": "Perfect code",
+      "syntax_valid": true,
+      "has_placeholder": false,
+      "pass": true,
+      "issues": []
+    },
+    {
+      "id": 2,
+      "expected": "Perfect recursive code",
+      "syntax_valid": true,
+      "has_placeholder": false,
+      "pass": true,
+      "issues": []
+    },
+    {
+      "id": 3,
+      "expected": "Syntax error - missing colon",
+      "syntax_valid": false,
+      "has_placeholder": false,
+      "pass": false,
+      "issues": [
+        "Syntax Error: expected ':' (<unknown>, line 3)"
+      ]
+    },
+    {
+      "id": 4,
+      "expected": "Contains placeholder comments",
+      "syntax_valid": true,
+      "has_placeholder": true,
+      "pass": false,
+      "issues": [
+        "Contains weak placeholder comments",
+        "Code is syntactically correct but contains placeholders"
+      ]
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 2,
+    "failed": 2
+  }
+}
