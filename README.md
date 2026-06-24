@@ -23,6 +23,7 @@ llm-eval-harness/
 ## How to run
 ```bash
 python evaluator.py
+```
 
 ### Rubric
 Criteria                   Weight           Passing Threshold
