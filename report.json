@@ -10,8 +10,8 @@
         "Poor variable name: 'a'",
         "Poor variable name: 'b'"
       ],
-      "score": 50,
-      "pass": false,
+      "score": 80,
+      "pass": true,
       "issues": [
         "Missing function docstring",
         "Poor variable name: 'a'",
@@ -29,8 +29,8 @@
         "Poor variable name: 'n'",
         "Poor variable name: 'n'"
       ],
-      "score": 35,
-      "pass": false,
+      "score": 80,
+      "pass": true,
       "issues": [
         "Missing function docstring",
         "Poor variable name: 'n'",
@@ -58,7 +58,7 @@
       "has_placeholder": true,
       "has_docstring": false,
       "naming_issues": [],
-      "score": 40,
+      "score": 50,
       "pass": false,
       "issues": [
         "Contains weak placeholder comments",
@@ -68,9 +68,9 @@
   ],
   "summary": {
     "total": 4,
-    "passed": 0,
-    "failed": 4,
-    "average_score": 31.25,
-    "timestamp": "2026-06-24T09:28:16.944097"
+    "passed": 2,
+    "failed": 2,
+    "average_score": 52.5,
+    "timestamp": "2026-06-25T14:46:20.042972"
   }
 }
