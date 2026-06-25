@@ -1,6 +1,7 @@
 import json
 import ast
 import logging
+import re
 from datetime import datetime
 
 # Setup logging
@@ -28,6 +29,31 @@ def check_variable_naming(node) -> list:
                 issues.append(f"Poor variable name: '{child.id}'")
     return issues
 
+def detect_placeholder(tree, code: str) -> bool:
+    """Detect placeholder comments or placeholder text in docstrings using regex with word boundaries."""
+    placeholder_regex = re.compile(r"\b(?:to be implemented|todo|placeholder|implement later|tbd|coming soon)\b", re.I)
+
+    # Check inline comments only (reduce false positives)
+    for line in code.splitlines():
+        if "#" in line:
+            comment = line.split("#", 1)[1]
+            if placeholder_regex.search(comment):
+                return True
+
+    # Check docstrings on module, classes and functions
+    try:
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                doc = ast.get_docstring(node)
+                if doc and placeholder_regex.search(doc):
+                    return True
+    except Exception:
+        # If docstring extraction fails for any reason, fall back to regex over entire code
+        pass
+
+    # Fallback: search whole code with word boundaries
+    return bool(placeholder_regex.search(code))
+
 def evaluate_code(code: str) -> dict:
     """Evaluate a single code snippet with advanced rubric."""
     result = {
@@ -51,17 +77,11 @@ def evaluate_code(code: str) -> dict:
         result["score"] = 0
         return result
     
-    # 2. Placeholder Check
-    placeholder_patterns = [
-        "# To be implemented", "# TODO", "placeholder", 
-        "implement later", "TBD", "coming soon"
-    ]
-    lower_code = code.lower()
-    for pattern in placeholder_patterns:
-        if pattern.lower() in lower_code:
+    # 2. Placeholder Check (robust via regex in comments/docstrings)
+    if result["syntax_valid"]:
+        if detect_placeholder(tree, code):
             result["has_placeholder"] = True
             result["issues"].append("Contains weak placeholder comments")
-            break
     
     # 3. Advanced Checks (only if syntax is valid)
     if result["syntax_valid"]:
@@ -75,16 +95,20 @@ def evaluate_code(code: str) -> dict:
         result["naming_issues"] = check_variable_naming(tree)
         result["issues"].extend(result["naming_issues"])
     
-    # 4. Scoring Rubric (0-100)
+    # 4. Scoring Rubric (0-100) - follows README percentages exactly
+    # Weights: Syntax (40), No Placeholders (40), Docstring (10), Good Variable Names (10)
     score = 100
     if result["has_placeholder"]:
         score -= 40
+    # Docstring check weight: 10 points
     if not result["has_docstring"]:
-        score -= 20
+        score -= 10
+    # Variable naming: if any naming issues, deduct the full 10 points
     if result["naming_issues"]:
-        score -= 15 * len(result["naming_issues"])
-    
+        score -= 10
+
     result["score"] = max(0, score)
+    # Syntax correctness is required: if syntax invalid we've already returned with score 0
     result["pass"] = result["score"] >= 70  # Passing threshold
     
     return result
