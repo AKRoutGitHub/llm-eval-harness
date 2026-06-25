@@ -2,35 +2,34 @@
 
 An AI-powered evaluation framework for grading Large Language Model code outputs.
 
+## Project Context & Origin
+> This evaluation harness was originally developed and iterated in a localized, private workspace to test model behavior benchmarks. It has been refactored, decoupled, and published here as a public portfolio piece to demonstrate programmatic dataset validation pipelines and strict QA edge-case screening.
+
 ## Features
 
 - Syntax validation using Python's `ast` module
-- Detection of placeholder comments (`TODO`, `# To be implemented`, etc.)
-- Docstring quality checking
+- Improved detection of placeholder comments (regex search in comments and docstrings)
+- Docstring quality checking (function-level)
 - Variable naming convention analysis
-- Detailed scoring rubric (0-100)
+- Deterministic scoring rubric (0-100)
 - Comprehensive logging and JSON reporting
- - Syntax validation using Python's `ast` module
- - Improved detection of placeholder comments (regex search in comments and docstrings)
- - Docstring quality checking (function-level)
- - Variable naming convention analysis
- - Deterministic scoring rubric that follows README weights (0-100)
- - Comprehensive logging and JSON reporting
 
 ## Project Structure
-
+```
 llm-eval-harness/
 ├── data.json           # Test cases
 ├── evaluator.py        # Main evaluation engine
 ├── report.json         # Generated evaluation report
 ├── evaluation.log      # Detailed logs
 └── README.md
-
+```
 ## How to run
 ```bash
 python evaluator.py
+```
 
 ### Rubric
+```
 Criteria                   Weight           Passing Threshold
 -----------             ------------     ------------------------
 Syntax correctness          40%                 Required
@@ -46,3 +45,4 @@ Scoring details:
 - Syntax errors short-circuit to score 0 (syntax correctness is required).
 
 Pass mark: 70+
+```
