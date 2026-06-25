@@ -9,8 +9,8 @@ An AI-powered evaluation framework for grading Large Language Model code outputs
 
 - Syntax validation using Python's `ast` module
 - Improved detection of placeholder comments (regex search in comments and docstrings)
-- Docstring quality checking (function-level)
-- Variable naming convention analysis
+- Docstring quality checking (module, class, and function-level)
+- Smarter variable naming heuristic allowing common short names in loops, parameters, and math contexts
 - Deterministic scoring rubric (0-100)
 - Comprehensive logging and JSON reporting
 
@@ -34,13 +34,13 @@ Criteria                   Weight           Passing Threshold
 -----------             ------------     ------------------------
 Syntax correctness          40%                 Required
 No Placeholders             40%                 Required
-Has Docstring               10%  (function-level docstrings)
+Has Docstring               10%  (module, class, and function-level docstrings)
 Good Variable Names         10%  (any naming issues deduct full 10 points)
 
 Scoring details:
 - Start at 100 points.
 - Subtract 40 if placeholder comments/text are detected (regex in comments/docstrings).
-- Subtract 10 if no function-level docstrings are present.
+- Subtract 10 if no module/class/function docstrings are present.
 - Subtract 10 if any variable-naming issues are found.
 - Syntax errors short-circuit to score 0 (syntax correctness is required).
 

@@ -6,16 +6,11 @@
       "syntax_valid": true,
       "has_placeholder": false,
       "has_docstring": false,
-      "naming_issues": [
-        "Poor variable name: 'a'",
-        "Poor variable name: 'b'"
-      ],
-      "score": 80,
+      "naming_issues": [],
+      "score": 90,
       "pass": true,
       "issues": [
-        "Missing function docstring",
-        "Poor variable name: 'a'",
-        "Poor variable name: 'b'"
+        "Missing docstring (module, class, or function level)"
       ]
     },
     {
@@ -24,18 +19,11 @@
       "syntax_valid": true,
       "has_placeholder": false,
       "has_docstring": false,
-      "naming_issues": [
-        "Poor variable name: 'n'",
-        "Poor variable name: 'n'",
-        "Poor variable name: 'n'"
-      ],
-      "score": 80,
+      "naming_issues": [],
+      "score": 90,
       "pass": true,
       "issues": [
-        "Missing function docstring",
-        "Poor variable name: 'n'",
-        "Poor variable name: 'n'",
-        "Poor variable name: 'n'"
+        "Missing docstring (module, class, or function level)"
       ]
     },
     {
@@ -62,15 +50,66 @@
       "pass": false,
       "issues": [
         "Contains weak placeholder comments",
-        "Missing function docstring"
+        "Missing docstring (module, class, or function level)"
+      ]
+    },
+    {
+      "id": 5,
+      "expected": "Module + class + function docstrings",
+      "syntax_valid": true,
+      "has_placeholder": false,
+      "has_docstring": true,
+      "naming_issues": [],
+      "score": 100,
+      "pass": true,
+      "issues": []
+    },
+    {
+      "id": 6,
+      "expected": "Contains placeholder in docstring/comment",
+      "syntax_valid": true,
+      "has_placeholder": true,
+      "has_docstring": true,
+      "naming_issues": [],
+      "score": 60,
+      "pass": false,
+      "issues": [
+        "Contains weak placeholder comments"
+      ]
+    },
+    {
+      "id": 7,
+      "expected": "Math context with short variable names",
+      "syntax_valid": true,
+      "has_placeholder": false,
+      "has_docstring": true,
+      "naming_issues": [],
+      "score": 100,
+      "pass": true,
+      "issues": []
+    },
+    {
+      "id": 8,
+      "expected": "Missing docstrings and naming issues",
+      "syntax_valid": true,
+      "has_placeholder": false,
+      "has_docstring": false,
+      "naming_issues": [
+        "Poor variable name: 's'"
+      ],
+      "score": 80,
+      "pass": true,
+      "issues": [
+        "Missing docstring (module, class, or function level)",
+        "Poor variable name: 's'"
       ]
     }
   ],
   "summary": {
-    "total": 4,
-    "passed": 2,
-    "failed": 2,
-    "average_score": 52.5,
-    "timestamp": "2026-06-25T14:46:20.042972"
+    "total": 8,
+    "passed": 5,
+    "failed": 3,
+    "average_score": 71.25,
+    "timestamp": "2026-06-25T15:04:21.411793"
   }
 }

@@ -18,5 +18,25 @@
     "id": 4,
     "code": "def process_data(data):\n    # To be implemented\n    result = None\n    # TODO: complete this function\n    return result",
     "expected": "Contains placeholder comments"
+  },
+  {
+    "id": 5,
+    "code": "\"\"\"Math utilities module.\"\"\"\n\nclass Calculator:\n    \"\"\"Simple calculator utilities.\"\"\"\n\n    def __init__(self, value):\n        \"\"\"Initialize calculator state.\"\"\"\n        self.value = value\n\n    def add(self, amount):\n        \"\"\"Add a number to the current value.\"\"\"\n        self.value += amount\n        return self.value\n\n\ndef compute_mean(numbers):\n    \"\"\"Compute the mean of a list of numbers.\"\"\"\n    return sum(numbers) / len(numbers)",
+    "expected": "Module + class + function docstrings"
+  },
+  {
+    "id": 6,
+    "code": "class DataProcessor:\n    \"\"\"Data processor class. To be implemented later.\"\"\"\n\n    def process(self, data):\n        \"\"\"Process data and return results.\"\"\"\n        # TODO: support batch mode\n        return [d * 2 for d in data]",
+    "expected": "Contains placeholder in docstring/comment"
+  },
+  {
+    "id": 7,
+    "code": "def compute_hypotenuse(x, y):\n    \"\"\"Calculate hypotenuse from legs x and y.\"\"\"\n    return (x**2 + y**2) ** 0.5\n\n\ndef pair_distances(points):\n    \"\"\"Return euclidean distances for point pairs.\"\"\"\n    return [compute_hypotenuse(x1 - x2, y1 - y2)\n            for (x1, y1), (x2, y2) in points]",
+    "expected": "Math context with short variable names"
+  },
+  {
+    "id": 8,
+    "code": "def analyze(values):\n    result = []\n    for v in values:\n        s = v ** 2\n        if s > 10:\n            result.append(s)\n    return result",
+    "expected": "Missing docstrings and naming issues"
   }
 ]
